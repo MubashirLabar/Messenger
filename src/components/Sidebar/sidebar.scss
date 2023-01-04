@@ -1,0 +1,71 @@
+@import "../../css/App.scss";
+
+.sidebar-cmp {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $sidebarWidth;
+  padding: 18px 18px;
+  z-index: 1000;
+  .logo {
+    line-height: 1;
+    padding: 0px 3px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .nav {
+    margin-top: 50px;
+    .link {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 4px;
+      @include anim;
+      &:not(:last-child) {
+        margin-bottom: 11px;
+      }
+      &.active,
+      &:hover {
+        background: $themeColor;
+        .lbl {
+          color: #fff;
+          font-weight: 500;
+        }
+        .icon {
+          svg {
+            color: #fff;
+          }
+        }
+      }
+      &:hover {
+        .lbl {
+          font-weight: inherit;
+        }
+      }
+      .icon {
+        margin-right: 14px;
+        line-height: 1;
+        margin-bottom: -1px;
+        @include anim;
+        svg {
+          height: 17px;
+          color: $lightBlack;
+          @include anim;
+        }
+      }
+      .lbl {
+        color: $lightBlack;
+        font-size: 14px;
+        @include anim;
+        line-height: 1;
+      }
+      &.help {
+        .icon {
+          margin-bottom: -3px;
+        }
+      }
+    }
+  }
+}

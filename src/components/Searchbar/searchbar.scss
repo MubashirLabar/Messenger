@@ -1,0 +1,30 @@
+@import "../../css/App.scss";
+
+.searchbar-cmp {
+  width: 100%;
+  border: 1px solid #cdcdcd;
+  padding: 8px 16px;
+  border-radius: 3px;
+  .actions {
+    .btn {
+      outline: none;
+      border: none;
+      background: none;
+      margin-right: 10px;
+      svg {
+        height: 19px;
+        color: #605e5c;
+      }
+      &.drop-down {
+        svg {
+          height: 5px;
+        }
+      }
+    }
+  }
+  .iput {
+    &::placeholder {
+      color: #a19f9d;
+    }
+  }
+}

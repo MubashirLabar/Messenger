@@ -1,0 +1,332 @@
+@import "../../css/App.scss";
+
+.inbox-page {
+  margin: 20px 0px;
+  height: calc(100vh - 98px);
+  .wrapper {
+    height: 100%;
+    .inbox-sidebar {
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      margin-right: 22px;
+      height: 100%;
+      overflow: hidden;
+      .hdr {
+        padding: 12px 14px 15px 14px;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        .search-field {
+          width: 100%;
+          background: #f2f3f5;
+          border-radius: 5px;
+          padding: 10px 15px;
+          height: 42px;
+          .icon {
+            line-height: 1;
+            margin-bottom: -3px;
+            margin-right: 10px;
+            svg {
+              height: 19px;
+              color: #3b3a39;
+            }
+          }
+          .iput {
+            &::placeholder {
+              color: #605e5c;
+            }
+          }
+        }
+      }
+      .friends-list {
+        padding: 0px 5px;
+        height: 100%;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+        .friend {
+          padding: 10px 12px;
+          @include anim;
+          cursor: pointer;
+          margin-bottom: 1px;
+          &.active,
+          &:hover {
+            background: #f2f3f5;
+            border-radius: 5px;
+          }
+          .image {
+            @include bgImage;
+            height: 47px;
+            width: 47px;
+            min-width: 47px;
+            margin-right: 10px;
+          }
+          .meta {
+            width: 100%;
+            overflow: hidden;
+            .row {
+              flex: 1;
+              justify-content: space-between;
+              width: 100%;
+              &:not(:last-child) {
+                margin-bottom: 3px;
+              }
+              .name {
+                font-size: 14px;
+                color: #020c31;
+              }
+              .stamp {
+                font-size: 12px;
+                color: #808598;
+              }
+              .msg {
+                font-size: 13px;
+                color: #605e5c;
+                margin-right: 5px;
+              }
+              .unread {
+                background: $themeColor;
+                color: #fff;
+                font-size: 12px;
+                font-weight: 500;
+                height: 21px;
+                width: 21px;
+                min-width: 21px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .chat-container {
+      flex: 1;
+      height: 100%;
+      background: #fff;
+      position: relative;
+      .inbox-content-hdr {
+        width: 100%;
+        border-bottom: 1px solid #ccced6;
+        height: 80px;
+        padding: 12px 22px;
+        .lit {
+          flex: 1;
+          .user {
+            .img {
+              @include bgImage;
+              height: 40px;
+              width: 40px;
+              min-width: 40px;
+            }
+            .meta {
+              margin-left: 10px;
+              .nam {
+                color: #020c31;
+                margin-bottom: 3.5px;
+              }
+              .txt {
+                color: #4e556f;
+              }
+            }
+          }
+        }
+        .rit {
+          flex: 1;
+          justify-content: flex-end;
+          .btn {
+            margin-right: 30px;
+            &:last-child {
+              margin-right: 15px;
+            }
+            svg {
+              height: 16px;
+              color: #020c31;
+            }
+          }
+        }
+      }
+      .messages-section {
+        height: 100%;
+        flex: 1;
+        padding: 15px 22px;
+        overflow: hidden;
+        overflow-y: auto;
+        .message-row {
+          margin-bottom: 5px;
+          display: flex;
+          flex-direction: column;
+          .msg-content {
+            flex: 1;
+            justify-content: space-between;
+          }
+          .msg-actions {
+            .setting-btn {
+              svg {
+                height: 18px;
+                color: #a19f9d;
+              }
+            }
+          }
+          .text {
+            font-size: 14px;
+            color: #201f1e;
+            background: #f2f3f5;
+            padding: 11px 14px;
+            max-width: fit-content;
+            margin-left: 35px;
+            border-radius: 0px 12px 12px 0px;
+          }
+          .meta {
+            margin-top: 5px;
+            display: none;
+            .user-profile {
+              @include bgImage;
+              height: 30px;
+              width: 30px;
+              min-width: 30px;
+            }
+            .stamp {
+              color: #605e5c;
+              font-size: 12px;
+              margin-left: 6px;
+            }
+          }
+        }
+        .message-user-block {
+        }
+        .message-friend-block {
+        }
+        .friend-message {
+          &:first-child {
+            .text {
+              border-radius: 12px 12px 12px 0px;
+            }
+          }
+          &:last-child {
+            margin-bottom: 40px;
+            .meta {
+              display: flex;
+            }
+          }
+        }
+        .user-message {
+          &:first-child {
+            .text {
+              border-radius: 12px 12px 12px 0px;
+            }
+          }
+          &:last-child {
+            .meta {
+              display: flex;
+            }
+          }
+          .text {
+            background: $themeColor;
+            color: #fff;
+          }
+        }
+      }
+      .inbox-content-ftr {
+        height: 78px;
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        padding: 12px 22px;
+        .field {
+          flex: 1;
+          background: #f2f3f5;
+          border-radius: 5px;
+          .iput {
+            width: 100%;
+            padding: 13px 20px;
+            color: #020c31;
+            &::placeholder {
+              color: #4e556f;
+            }
+          }
+        }
+        .actions {
+          margin-left: 25px;
+          .upload-btn {
+            margin-right: 25px;
+            svg {
+              height: 16px;
+              color: #605e5c;
+            }
+          }
+          .send-btn {
+            outline: none;
+            border: none;
+            background: none;
+            justify-content: center;
+            background: $themeColor;
+            height: 41px;
+            width: 41px;
+            min-width: 41px;
+            border-radius: 6px;
+            &:hover {
+              opacity: 0.9;
+            }
+            svg {
+              color: #fff;
+              height: 22px;
+              @include anim;
+              margin-right: 1px;
+            }
+          }
+        }
+      }
+      .message-setting {
+        background: #fff;
+        border: 1px solid #e3e8ec;
+        filter: drop-shadow(0px 4px 8px rgba(24, 36, 60, 0.15));
+        padding: 15px 18px;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 3;
+        top: 30px;
+        right: 0px;
+        width: 140px;
+        &.show {
+          @include dropDownAnim;
+        }
+        .item {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            .ico {
+              svg {
+                color: $themeColor;
+              }
+            }
+            .lbl {
+              color: $themeColor;
+            }
+          }
+          &:not(:last-child) {
+            margin-bottom: 15px;
+          }
+          .ico {
+            margin-right: 10px;
+            svg {
+              height: 13px;
+              color: #323130;
+            }
+          }
+        }
+      }
+    }
+  }
+}

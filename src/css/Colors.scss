@@ -1,0 +1,28 @@
+$themeColor: #eb595b;
+$themeColorHover: #eb595b;
+$pageBackground: #fff;
+$lightButtonColor: #ffffff;
+$lightButtonBorderColor: #a0a0a0;
+$lightButtonColorHover: #f1f1f1;
+
+$blue: #1f88fe;
+$red: #d80000;
+$black: #201f1e;
+$lightBlack: #605e5c;
+$zero: #363636;
+
+.color {
+  color: $themeColor;
+}
+.black {
+  color: $black;
+}
+.lightBlack {
+  color: $lightBlack;
+}
+.blue {
+  color: $blue;
+}
+.red {
+  color: $red;
+}

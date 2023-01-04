@@ -1,0 +1,70 @@
+@import "./Colors.scss";
+@import "./Props.scss";
+@import "./media.scss";
+
+body {
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.font {
+  font-family: "Inter", sans-serif;
+}
+
+.sho {
+  visibility: visible;
+  opacity: 1;
+}
+.hid {
+  visibility: hidden;
+  opacity: 0;
+}
+.hidden-input {
+  position: absolute;
+  top: -99999px;
+  left: -342432px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin bgImage($radius: 50%) {
+  height: 100%;
+  width: 100%;
+  border-radius: $radius;
+  background-color: #e2e2e2;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  overflow: hidden;
+}
+
+@mixin dropDownAnim($duration: 0.3s) {
+  animation-name: drop;
+  animation-duration: $duration;
+  transform-origin: top;
+}
+@keyframes drop {
+  0% {
+    transform: scaleY(0.5);
+    opacity: 0;
+  }
+}
+
+$headerHeight: 55px;
+$sidebarWidth: 220px;
+
+.app-padding {
+  padding: 0px 2.5%;
+}
+
+.App {
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  margin-left: $sidebarWidth;
+}

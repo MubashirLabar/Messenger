@@ -1,0 +1,61 @@
+@import "../../css/App.scss";
+
+.header-cmp {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: $sidebarWidth;
+  right: 0;
+  margin-left: 2px;
+  border-bottom: 1px solid #e4e6e8;
+  z-index: 999;
+  .wrapper {
+    width: 100%;
+    height: $headerHeight;
+    .left {
+      flex: 1;
+      height: 100%;
+    }
+    .right {
+      flex: 1.5;
+      justify-content: flex-end;
+      height: 100%;
+      .search {
+        width: 290px;
+      }
+      .notification {
+        margin: 0px 29px;
+        .icon {
+          svg {
+            height: 20px;
+            color: #4b5563;
+          }
+        }
+      }
+      .user {
+        border-left: 1px solid #e5e7eb;
+        height: 100%;
+        padding-left: 28px;
+        .dp {
+          @include bgImage;
+          height: 35px;
+          width: 35px;
+        }
+        .name {
+          color: #6b7280;
+          padding: 0px 9px;
+        }
+        .drop-btn {
+          margin-bottom: 4px;
+          svg {
+            height: 5px;
+            color: #6b7280;
+          }
+        }
+      }
+    }
+  }
+}
+.clean-header {
+  height: $headerHeight;
+}
