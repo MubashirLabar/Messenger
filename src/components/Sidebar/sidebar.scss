@@ -9,6 +9,10 @@
   width: $sidebarWidth;
   padding: 18px 18px;
   z-index: 1000;
+  @include media("<=desktop") {
+    display: none;
+  }
+
   .logo {
     line-height: 1;
     padding: 0px 3px;

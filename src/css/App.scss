@@ -58,6 +58,9 @@ $sidebarWidth: 220px;
 
 .app-padding {
   padding: 0px 2.5%;
+  @include media("<=desktop") {
+    padding: 0px 20px;
+  }
 }
 
 .App {
@@ -67,4 +70,7 @@ $sidebarWidth: 220px;
 
 .app-wrapper {
   margin-left: $sidebarWidth;
+  @include media("<=desktop") {
+    margin-left: 0px;
+  }
 }

@@ -9,6 +9,9 @@
   margin-left: 2px;
   border-bottom: 1px solid #e4e6e8;
   z-index: 999;
+  @include media("<=desktop") {
+    left: 0px;
+  }
   .wrapper {
     width: 100%;
     height: $headerHeight;
@@ -20,11 +23,28 @@
       flex: 1.5;
       justify-content: flex-end;
       height: 100%;
+      .menu-btn {
+        color: $zero;
+        display: none;
+        @include media("<=tablet") {
+          display: flex;
+        }
+        svg {
+          height: 24px;
+          width: 24px;
+        }
+      }
       .search {
         width: 290px;
+        @include media("<=tablet") {
+          display: none;
+        }
       }
       .notification {
         margin: 0px 29px;
+        @include media("<=tablet") {
+          display: none;
+        }
         .icon {
           svg {
             height: 20px;
@@ -36,6 +56,9 @@
         border-left: 1px solid #e5e7eb;
         height: 100%;
         padding-left: 28px;
+        @include media("<=tablet") {
+          display: none;
+        }
         .dp {
           @include bgImage;
           height: 35px;

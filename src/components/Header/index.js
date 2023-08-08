@@ -1,5 +1,5 @@
 import React from "react";
-import { BellIcon, DropDownIcon } from "../../assets/icons";
+import { BellIcon, DropDownIcon, MenuIcon } from "../../assets/icons";
 import Searchbar from "../Searchbar";
 import "./header.scss";
 
@@ -12,6 +12,9 @@ const Header = () => {
             <div className="title font s18 b6 c000">Inbox</div>
           </div>
           <div className="right flex aic">
+            <div className="menu-btn">
+              <MenuIcon />
+            </div>
             <div className="search flex aic">
               <Searchbar />
             </div>

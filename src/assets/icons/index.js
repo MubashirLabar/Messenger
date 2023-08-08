@@ -16,6 +16,8 @@ import MoreIcon from "./MoreIcon";
 import EditIcon from "./EditIcon";
 import QuoteIcon from "./QuoteIcon";
 import DeleteIcon from "./DeleteIcon";
+import MenuIcon from "./MenuIcon";
+import ArrowBackIcon from "./ArrowBackIcon";
 
 export {
   DashboardIcon,
@@ -36,4 +38,6 @@ export {
   EditIcon,
   QuoteIcon,
   DeleteIcon,
+  MenuIcon,
+  ArrowBackIcon,
 };

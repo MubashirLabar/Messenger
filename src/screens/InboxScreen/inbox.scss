@@ -3,6 +3,30 @@
 .inbox-page {
   margin: 20px 0px;
   height: calc(100vh - 98px);
+  @include media("<=tablet") {
+    &.resize-height {
+      height: calc(100vh - 135px);
+      .inbox-content-ftr {
+        bottom: 24px !important;
+      }
+    }
+  }
+  .back-btn {
+    font-size: 16px;
+    color: $black;
+    align-items: center;
+    display: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    @include media("<=tablet") {
+      display: flex;
+    }
+    svg {
+      height: 15px;
+      width: 15px;
+      margin-right: 5px;
+    }
+  }
   .wrapper {
     height: 100%;
     .inbox-sidebar {
@@ -12,6 +36,16 @@
       margin-right: 22px;
       height: 100%;
       overflow: hidden;
+      @include media("<=desktop") {
+        margin-right: 20px;
+      }
+      @include media("<=tablet") {
+        width: 100%;
+        margin-right: 0px;
+        &.hide-sidebar {
+          display: none;
+        }
+      }
       .hdr {
         padding: 12px 14px 15px 14px;
         top: 0;
@@ -45,7 +79,7 @@
         height: 100%;
         overflow-y: auto;
         &::-webkit-scrollbar {
-          width: 6px;
+          width: 5px;
         }
         .friend {
           padding: 10px 12px;
@@ -110,6 +144,12 @@
       height: 100%;
       background: #fff;
       position: relative;
+      @include media("<=tablet") {
+        display: none;
+        &.open-chat {
+          display: block;
+        }
+      }
       .inbox-content-hdr {
         width: 100%;
         border-bottom: 1px solid #ccced6;
@@ -157,6 +197,9 @@
         padding: 15px 22px;
         overflow: hidden;
         overflow-y: auto;
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
         .message-row {
           margin-bottom: 5px;
           display: flex;
@@ -164,8 +207,17 @@
           .msg-content {
             flex: 1;
             justify-content: space-between;
+            &:hover {
+              .msg-actions {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
           }
           .msg-actions {
+            @include anim;
+            opacity: 0;
+            visibility: hidden;
             .setting-btn {
               svg {
                 height: 18px;
@@ -184,7 +236,6 @@
           }
           .meta {
             margin-top: 5px;
-            display: none;
             .user-profile {
               @include bgImage;
               height: 30px;
@@ -197,12 +248,19 @@
               margin-left: 6px;
             }
           }
-        }
-        .message-user-block {
-        }
-        .message-friend-block {
+          &.friend-message {
+          }
+          &.user-message {
+            .msg-content {
+              flex-direction: row-reverse;
+              .text {
+                border-radius: 12px 12px 0px 12px;
+              }
+            }
+          }
         }
         .friend-message {
+          margin-bottom: 30px;
           &:first-child {
             .text {
               border-radius: 12px 12px 12px 0px;
@@ -295,7 +353,7 @@
         position: absolute;
         z-index: 3;
         top: 30px;
-        right: 0px;
+        left: 0px;
         width: 140px;
         &.show {
           @include dropDownAnim;

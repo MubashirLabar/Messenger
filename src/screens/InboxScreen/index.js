@@ -10,6 +10,7 @@ import {
   SearchIcon,
   SendIcon,
   SettingIcon,
+  ArrowBackIcon,
 } from "../../assets/icons";
 import "./inbox.scss";
 
@@ -186,12 +187,43 @@ const InboxScreen = () => {
     stamp: "9:21",
     profile_image: "/images/user-1.png",
   });
+  const [openChat, setOpenChat] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    if (windowWidth <= 768) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [windowWidth]);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
-    <div className="inbox-page rel">
+    <div className={`inbox-page rel ${openChat ? "resize-height" : ""}`}>
+      {openChat && (
+        <button
+          className="back-btn app-padding cleanbtn"
+          onClick={() => setOpenChat(false)}
+        >
+          <ArrowBackIcon />
+          Back
+        </button>
+      )}
       <div className="wrapper app-padding flex">
         {/* Inbox Sidebar */}
-        <div className="inbox-sidebar rel">
+        <div className={`inbox-sidebar rel ${openChat ? "hide-sidebar" : ""}`}>
           <div className="hdr flex aic sticky">
             <div className="search-field flex aic">
               <div className="icon">
@@ -210,6 +242,7 @@ const InboxScreen = () => {
                 key={index}
                 onClick={() => {
                   setSelectedChat(item);
+                  setOpenChat(true);
                 }}
                 className={`friend flex aic ${
                   selectedChat.id === item.id ? "active" : ""
@@ -239,7 +272,11 @@ const InboxScreen = () => {
         </div>
 
         {/* Chat Container */}
-        <ChatContainer selectedChat={selectedChat} />
+        <ChatContainer
+          selectedChat={selectedChat}
+          openChat={openChat}
+          setOpenChat={setOpenChat}
+        />
       </div>
     </div>
   );
@@ -248,7 +285,7 @@ const InboxScreen = () => {
 export default InboxScreen;
 
 // Chat Container
-const ChatContainer = ({ selectedChat }) => {
+const ChatContainer = ({ selectedChat, openChat, setOpenChat }) => {
   const [username, setUsername] = useState("Mubashir");
   const [user, setUser] = useState(true);
   const [input, setInput] = useState("");
@@ -257,11 +294,6 @@ const ChatContainer = ({ selectedChat }) => {
       username: "Zephyrus",
       text: "Hello there! 👋",
       stamp: "9:20",
-    },
-    {
-      username: "Zephyrus",
-      text: "Welcome to our help center. ‍💻",
-      stamp: "9:21",
     },
   ]);
 
@@ -280,7 +312,9 @@ const ChatContainer = ({ selectedChat }) => {
   };
 
   return (
-    <div className="chat-container flex flex-col">
+    <div
+      className={`chat-container flex flex-col ${openChat ? "open-chat" : ""}`}
+    >
       <div className="inbox-content-hdr flex aic">
         <div className="lit flex aic">
           <div className="user flex aic">
@@ -424,15 +458,17 @@ const Message = forwardRef(({ message, username, selectedChat }, ref) => {
           </div>
         </div>
       </div>
-      <div className="meta flex aic">
-        <div
-          className="user-profile"
-          style={{
-            backgroundImage: `url(${selectedChat.profile_image})`,
-          }}
-        />
-        <div className="stamp font">{message.stamp}</div>
-      </div>
+      {!isUser && (
+        <div className="meta flex aic">
+          <div
+            className="user-profile"
+            style={{
+              backgroundImage: `url(${selectedChat.profile_image})`,
+            }}
+          />
+          <div className="stamp font">{message.stamp}</div>
+        </div>
+      )}
     </div>
   );
 });
